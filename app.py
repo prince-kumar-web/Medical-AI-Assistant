@@ -21,9 +21,9 @@ from utils.text_processor import extract_symptoms
 from services.llama_chat import generate_health_response
 
 
-# =========================================================
+
 # PAGE CONFIG
-# =========================================================
+
 
 st.set_page_config(
     page_title="Medical AI Assistant",
@@ -31,9 +31,9 @@ st.set_page_config(
     layout="wide"
 )
 
-# =========================================================
+
 # HERO IMAGE
-# =========================================================
+
 image = Image.open(
     "assets/ChatGPT Image Aug 10, 2026, 07_41_48 PM.png"
 )
@@ -43,19 +43,15 @@ st.image(
     use_container_width=True
 )
 
-# =========================================================
+
+
+
+
+
+
+
 # TITLE
-# =========================================================
 
-
-
-
-
-# =========================================================
-# TITLE
-# =========================================================
-
-# st.title("🩺 Medical AI Assistant")
 
 st.write(
     "Select your symptoms or describe them in your own words."
@@ -67,9 +63,9 @@ st.info(
 )
 
 
-# =========================================================
+
 # SESSION STATE
-# =========================================================
+
 
 if "predictions" not in st.session_state:
     st.session_state.predictions = None
@@ -81,17 +77,17 @@ if "prediction_source" not in st.session_state:
     st.session_state.prediction_source = None
 
 
-# =========================================================
+
 # LOAD SYMPTOMS
-# =========================================================
+
 
 with open("models/symptoms.pkl", "rb") as file:
     symptoms = pickle.load(file)
 
 
-# =========================================================
+
 # DESCRIBE YOUR SYMPTOMS
-# =========================================================
+
 
 st.subheader("📝 Describe Your Symptoms")
 
@@ -104,9 +100,9 @@ symptom_text = st.text_area(
 )
 
 
-# =========================================================
+
 # ANALYZE DESCRIPTION
-# =========================================================
+
 
 if st.button("🔍 Analyze Symptoms"):
 
@@ -143,9 +139,9 @@ if st.button("🔍 Analyze Symptoms"):
                 )
 
 
-# =========================================================
+
 # SELECT SYMPTOMS
-# =========================================================
+
 
 st.subheader("🔹 Select Symptoms")
 
@@ -155,16 +151,16 @@ selected_symptoms = st.multiselect(
 )
 
 
-# =========================================================
+
 # DISEASE PREDICTION
-# =========================================================
+
 
 st.subheader("🩺 Disease Prediction")
 
 
-# =========================================================
+
 # PREDICT FROM SELECTED SYMPTOMS
-# =========================================================
+
 
 if st.button("Predict Disease"):
 
@@ -192,9 +188,9 @@ if st.button("Predict Disease"):
         )
 
 
-# =========================================================
+
 # PREDICT FROM DESCRIPTION USING BERT
-# =========================================================
+
 
 if st.button("🩺 Predict From Description"):
 
@@ -239,9 +235,9 @@ if st.button("🩺 Predict From Description"):
             )
 
 
-# =========================================================
+
 # COMMON PREDICTION RESULT
-# =========================================================
+
 
 if st.session_state.predictions:
 
@@ -252,9 +248,9 @@ if st.session_state.predictions:
     )
 
 
-    # =====================================================
+    
     # TOP 3 DISEASES
-    # =====================================================
+    
 
     st.subheader(
         "Top 3 Possible Diseases"
@@ -271,16 +267,16 @@ if st.session_state.predictions:
         )
 
 
-    # =====================================================
+   
     # TOP PREDICTED DISEASE
-    # =====================================================
+    
 
     disease = predictions[0]["disease"]
 
 
-    # =====================================================
+   
     # RISK SCORE
-    # =====================================================
+   
 
     score, risk = calculate_risk(
         active_symptoms
@@ -300,9 +296,9 @@ if st.session_state.predictions:
     )
 
 
-    # =====================================================
+    
     # EMERGENCY DETECTION
-    # =====================================================
+   
 
     matched = check_emergency(
         active_symptoms
@@ -326,9 +322,9 @@ if st.session_state.predictions:
             )
 
 
-    # =====================================================
+    
     # DISEASE DESCRIPTION
-    # =====================================================
+   
 
     st.subheader(
         "Disease Description"
@@ -343,9 +339,9 @@ if st.session_state.predictions:
     )
 
 
-    # =====================================================
+    
     # PRECAUTIONS
-    # =====================================================
+    
 
     st.subheader(
         "Precautions"
@@ -362,9 +358,9 @@ if st.session_state.predictions:
         )
 
 
-# =========================================================
+
 # HOSPITAL SEARCH FUNCTION
-# =========================================================
+
 
 def find_hospitals(city):
 
@@ -402,9 +398,9 @@ def find_hospitals(city):
         return []
 
 
-# =========================================================
+
 # NEARBY HOSPITALS
-# =========================================================
+
 
 st.subheader("🏥 Nearby Hospitals")
 
