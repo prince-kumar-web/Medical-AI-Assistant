@@ -1,0 +1,10 @@
+﻿myenv/
+__pycache__/
+*.pyc
+.streamlit/secrets.toml
+.env
+models/qwen/
+models/llama/
+.cache/
+
+models/bert_model/
