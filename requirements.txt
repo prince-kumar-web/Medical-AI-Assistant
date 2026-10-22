@@ -1,3 +1,4 @@
+
 streamlit
 numpy
 pandas
@@ -6,3 +7,4 @@ joblib
 requests
 pillow
 torch
+transformers
