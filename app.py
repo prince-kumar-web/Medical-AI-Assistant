@@ -4,10 +4,10 @@ import pickle
 import requests
 from PIL import Image
 
-from utils.predictor import (
-    predict_disease,
-    predict_disease_bert
-)
+# from utils.predictor import (
+#     predict_disease,
+#     predict_disease_bert
+# )
 
 from services.disease_info import (
     get_description,
