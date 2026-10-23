@@ -18,7 +18,12 @@ from services.risk_score import calculate_risk
 from services.emergency import check_emergency
 
 from utils.text_processor import extract_symptoms
-from services.llama_chat import generate_health_response
+# from services.llama_chat import generate_health_response
+try:
+    from services.llama_chat import generate_health_response
+except ModuleNotFoundError as e:
+    st.error(f"Diagnostic — missing module: {e.name}")
+    st.stop()
 
 
 try:
